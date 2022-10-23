@@ -21,7 +21,7 @@ public class Vista extends javax.swing.JFrame {
     public Vista() {
         initComponents();
         setSize(350, 550);
-        setBackground(new Color(0,0,0,0));
+        setBackground(new Color(0, 0, 0, 0));
         setLocationRelativeTo(null);
     }
 
@@ -34,7 +34,16 @@ public class Vista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btn_cerrar = new javax.swing.JButton();
+        lbl_logo = new javax.swing.JLabel();
+        lbl_apagado = new javax.swing.JLabel();
+        lbl_linea = new javax.swing.JLabel();
+        lbl_automatico = new javax.swing.JLabel();
+        lbl_hoas1 = new javax.swing.JLabel();
+        lbl_hoas = new javax.swing.JLabel();
+        txt_minutos = new javax.swing.JTextField();
+        txt_horas = new javax.swing.JTextField();
+        lbl_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -52,9 +61,81 @@ public class Vista extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 350, 550);
+        btn_cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar1.png"))); // NOI18N
+        btn_cerrar.setBorder(null);
+        btn_cerrar.setBorderPainted(false);
+        btn_cerrar.setContentAreaFilled(false);
+        btn_cerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cerrar.setFocusPainted(false);
+        btn_cerrar.setFocusable(false);
+        btn_cerrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar2.png"))); // NOI18N
+        btn_cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cerrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_cerrar);
+        btn_cerrar.setBounds(270, 30, 40, 22);
+
+        lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+        getContentPane().add(lbl_logo);
+        lbl_logo.setBounds(30, 70, 110, 110);
+
+        lbl_apagado.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        lbl_apagado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_apagado.setText("Apagado");
+        getContentPane().add(lbl_apagado);
+        lbl_apagado.setBounds(160, 90, 130, 40);
+
+        lbl_linea.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        lbl_linea.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_linea.setText("_________");
+        getContentPane().add(lbl_linea);
+        lbl_linea.setBounds(146, 100, 160, 40);
+
+        lbl_automatico.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        lbl_automatico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_automatico.setText("automatico");
+        getContentPane().add(lbl_automatico);
+        lbl_automatico.setBounds(150, 130, 150, 40);
+
+        lbl_hoas1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_hoas1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_hoas1.setText("Minutos");
+        getContentPane().add(lbl_hoas1);
+        lbl_hoas1.setBounds(205, 360, 70, 22);
+
+        lbl_hoas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_hoas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_hoas.setText("Horas");
+        getContentPane().add(lbl_hoas);
+        lbl_hoas.setBounds(65, 360, 50, 22);
+
+        txt_minutos.setFont(new java.awt.Font("Tahoma", 0, 100)); // NOI18N
+        txt_minutos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_minutos.setText("00");
+        txt_minutos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_minutosKeyTyped(evt);
+            }
+        });
+        getContentPane().add(txt_minutos);
+        txt_minutos.setBounds(180, 240, 120, 110);
+
+        txt_horas.setFont(new java.awt.Font("Tahoma", 0, 100)); // NOI18N
+        txt_horas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_horas.setText("00");
+        txt_horas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_horasKeyTyped(evt);
+            }
+        });
+        getContentPane().add(txt_horas);
+        txt_horas.setBounds(30, 240, 120, 110);
+
+        lbl_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
+        getContentPane().add(lbl_fondo);
+        lbl_fondo.setBounds(0, 0, 350, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -72,6 +153,45 @@ public class Vista extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_formMouseDragged
+
+    private void btn_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrarActionPerformed
+
+        System.exit(0);
+
+    }//GEN-LAST:event_btn_cerrarActionPerformed
+
+    private void txt_horasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_horasKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (txt_horas.getText().length() >= 2) {
+            evt.consume();
+        } else {
+
+            if (!Character.isDigit(c)) {
+                evt.consume();
+            }
+
+        }
+
+
+    }//GEN-LAST:event_txt_horasKeyTyped
+
+    private void txt_minutosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_minutosKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (txt_minutos.getText().length() >= 2) {
+            evt.consume();
+        } else {
+
+            if (!Character.isDigit(c)) {
+                evt.consume();
+            }
+
+        }
+
+    }//GEN-LAST:event_txt_minutosKeyTyped
 
     /**
      * @param args the command line arguments
@@ -109,6 +229,15 @@ public class Vista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btn_cerrar;
+    private javax.swing.JLabel lbl_apagado;
+    private javax.swing.JLabel lbl_automatico;
+    private javax.swing.JLabel lbl_fondo;
+    private javax.swing.JLabel lbl_hoas;
+    private javax.swing.JLabel lbl_hoas1;
+    private javax.swing.JLabel lbl_linea;
+    private javax.swing.JLabel lbl_logo;
+    private javax.swing.JTextField txt_horas;
+    private javax.swing.JTextField txt_minutos;
     // End of variables declaration//GEN-END:variables
 }
