@@ -5,6 +5,8 @@
  */
 package apagar;
 
+import java.awt.Color;
+
 /**
  *
  * @author Usuario
@@ -18,7 +20,8 @@ public class Vista extends javax.swing.JFrame {
 
     public Vista() {
         initComponents();
-        setSize(300, 500);
+        setSize(350, 550);
+        setBackground(new Color(0,0,0,0));
         setLocationRelativeTo(null);
     }
 
@@ -31,10 +34,12 @@ public class Vista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(300, 500));
-        setSize(new java.awt.Dimension(300, 500));
+        setSize(new java.awt.Dimension(350, 550));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -46,6 +51,10 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(null);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 350, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -100,5 +109,6 @@ public class Vista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
