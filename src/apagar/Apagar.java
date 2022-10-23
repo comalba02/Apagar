@@ -11,7 +11,7 @@ public class Apagar {
      */
     public static void main(String[] args) {
 
-        Vista interfaz = new Vista();
+        programar interfaz = new programar();
         interfaz.setVisible(true);
         
     }

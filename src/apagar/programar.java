@@ -6,19 +6,27 @@
 package apagar;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Usuario
  */
-public class Vista extends javax.swing.JFrame {
+public class programar extends javax.swing.JFrame {
 
     /**
-     * Creates new form Vista
+     * Creates new form programar
      */
-    int x, y;
+    int x,
 
-    public Vista() {
+    /**
+     * Creates new form programar
+     */
+    y;
+
+    public programar() {
         initComponents();
         setSize(350, 460);
         setBackground(new Color(0, 0, 0, 0));
@@ -150,6 +158,11 @@ public class Vista extends javax.swing.JFrame {
         btn_iniciar.setFocusPainted(false);
         btn_iniciar.setFocusable(false);
         btn_iniciar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iniciar2.png"))); // NOI18N
+        btn_iniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_iniciarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_iniciar);
         btn_iniciar.setBounds(40, 360, 250, 60);
 
@@ -213,6 +226,33 @@ public class Vista extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txt_minutosKeyTyped
 
+    private void btn_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarActionPerformed
+
+        String sistema = System.getProperty("os.name");
+        String shutdownCommand = "";
+
+        int horas = Integer.parseInt(txt_horas.getText()) * 60;
+        int minutos = Integer.parseInt(txt_minutos.getText());
+        int tiempo = (horas + minutos) * 60;
+
+        if (tiempo > 0) {
+            
+            if (sistema.contains("Windows") || sistema.contains("windows")) {
+                shutdownCommand = "shutdown.exe -s -f -t " + tiempo;
+
+            }
+            
+        }
+        
+        try {
+            Runtime.getRuntime().exec(shutdownCommand);
+        } catch (IOException ex) {
+            Logger.getLogger(programar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+    }//GEN-LAST:event_btn_iniciarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,20 +270,21 @@ public class Vista extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(programar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(programar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(programar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(programar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Vista().setVisible(true);
+                new programar().setVisible(true);
             }
         });
     }
