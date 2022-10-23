@@ -20,7 +20,7 @@ public class Vista extends javax.swing.JFrame {
 
     public Vista() {
         initComponents();
-        setSize(350, 550);
+        setSize(350, 460);
         setBackground(new Color(0, 0, 0, 0));
         setLocationRelativeTo(null);
     }
@@ -39,10 +39,12 @@ public class Vista extends javax.swing.JFrame {
         lbl_apagado = new javax.swing.JLabel();
         lbl_linea = new javax.swing.JLabel();
         lbl_automatico = new javax.swing.JLabel();
-        lbl_hoas1 = new javax.swing.JLabel();
-        lbl_hoas = new javax.swing.JLabel();
+        lbl_minutos = new javax.swing.JLabel();
         txt_minutos = new javax.swing.JTextField();
+        lbl_horas = new javax.swing.JLabel();
         txt_horas = new javax.swing.JTextField();
+        lbl_puntos = new javax.swing.JLabel();
+        btn_iniciar = new javax.swing.JButton();
         lbl_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,7 +77,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_cerrar);
-        btn_cerrar.setBounds(270, 30, 40, 22);
+        btn_cerrar.setBounds(270, 25, 40, 22);
 
         lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
         getContentPane().add(lbl_logo);
@@ -95,21 +97,15 @@ public class Vista extends javax.swing.JFrame {
 
         lbl_automatico.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         lbl_automatico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_automatico.setText("automatico");
+        lbl_automatico.setText("automático");
         getContentPane().add(lbl_automatico);
         lbl_automatico.setBounds(150, 130, 150, 40);
 
-        lbl_hoas1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_hoas1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_hoas1.setText("Minutos");
-        getContentPane().add(lbl_hoas1);
-        lbl_hoas1.setBounds(205, 360, 70, 22);
-
-        lbl_hoas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_hoas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_hoas.setText("Horas");
-        getContentPane().add(lbl_hoas);
-        lbl_hoas.setBounds(65, 360, 50, 22);
+        lbl_minutos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_minutos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_minutos.setText("Minutos");
+        getContentPane().add(lbl_minutos);
+        lbl_minutos.setBounds(210, 320, 70, 22);
 
         txt_minutos.setFont(new java.awt.Font("Tahoma", 0, 100)); // NOI18N
         txt_minutos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -120,7 +116,13 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_minutos);
-        txt_minutos.setBounds(180, 240, 120, 110);
+        txt_minutos.setBounds(180, 200, 120, 110);
+
+        lbl_horas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_horas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_horas.setText("Horas");
+        getContentPane().add(lbl_horas);
+        lbl_horas.setBounds(70, 320, 50, 22);
 
         txt_horas.setFont(new java.awt.Font("Tahoma", 0, 100)); // NOI18N
         txt_horas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -131,11 +133,29 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_horas);
-        txt_horas.setBounds(30, 240, 120, 110);
+        txt_horas.setBounds(30, 200, 120, 110);
+
+        lbl_puntos.setFont(new java.awt.Font("Tahoma", 0, 70)); // NOI18N
+        lbl_puntos.setForeground(new java.awt.Color(208, 0, 29));
+        lbl_puntos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_puntos.setText(":");
+        getContentPane().add(lbl_puntos);
+        lbl_puntos.setBounds(150, 220, 30, 70);
+
+        btn_iniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iniciar1.png"))); // NOI18N
+        btn_iniciar.setBorder(null);
+        btn_iniciar.setBorderPainted(false);
+        btn_iniciar.setContentAreaFilled(false);
+        btn_iniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_iniciar.setFocusPainted(false);
+        btn_iniciar.setFocusable(false);
+        btn_iniciar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iniciar2.png"))); // NOI18N
+        getContentPane().add(btn_iniciar);
+        btn_iniciar.setBounds(40, 360, 250, 60);
 
         lbl_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
         getContentPane().add(lbl_fondo);
-        lbl_fondo.setBounds(0, 0, 350, 550);
+        lbl_fondo.setBounds(0, 0, 330, 470);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,13 +250,15 @@ public class Vista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cerrar;
+    private javax.swing.JButton btn_iniciar;
     private javax.swing.JLabel lbl_apagado;
     private javax.swing.JLabel lbl_automatico;
     private javax.swing.JLabel lbl_fondo;
-    private javax.swing.JLabel lbl_hoas;
-    private javax.swing.JLabel lbl_hoas1;
+    private javax.swing.JLabel lbl_horas;
     private javax.swing.JLabel lbl_linea;
     private javax.swing.JLabel lbl_logo;
+    private javax.swing.JLabel lbl_minutos;
+    private javax.swing.JLabel lbl_puntos;
     private javax.swing.JTextField txt_horas;
     private javax.swing.JTextField txt_minutos;
     // End of variables declaration//GEN-END:variables
