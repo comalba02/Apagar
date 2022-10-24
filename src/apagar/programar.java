@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package apagar;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Timer;
 
 /**
  *
@@ -16,21 +14,20 @@ import java.util.logging.Logger;
  */
 public class programar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form programar
-     */
-    int x,
+    int x, y;
+    Timer timer;
 
-    /**
-     * Creates new form programar
-     */
-    y;
-
+    int minutos, horas;
+    
+    String sistema = System.getProperty("os.name");
+    String shutdownCommand = "";
+    
     public programar() {
         initComponents();
         setSize(350, 460);
         setBackground(new Color(0, 0, 0, 0));
         setLocationRelativeTo(null);
+        btn_parar.setVisible(false);
     }
 
     /**
@@ -53,6 +50,7 @@ public class programar extends javax.swing.JFrame {
         txt_horas = new javax.swing.JTextField();
         lbl_puntos = new javax.swing.JLabel();
         btn_iniciar = new javax.swing.JButton();
+        btn_parar = new javax.swing.JButton();
         lbl_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,6 +116,11 @@ public class programar extends javax.swing.JFrame {
         txt_minutos.setFont(new java.awt.Font("Tahoma", 0, 100)); // NOI18N
         txt_minutos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_minutos.setText("00");
+        txt_minutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_minutosMouseClicked(evt);
+            }
+        });
         txt_minutos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_minutosKeyTyped(evt);
@@ -135,6 +138,11 @@ public class programar extends javax.swing.JFrame {
         txt_horas.setFont(new java.awt.Font("Tahoma", 0, 100)); // NOI18N
         txt_horas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_horas.setText("00");
+        txt_horas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_horasMouseClicked(evt);
+            }
+        });
         txt_horas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_horasKeyTyped(evt);
@@ -165,6 +173,22 @@ public class programar extends javax.swing.JFrame {
         });
         getContentPane().add(btn_iniciar);
         btn_iniciar.setBounds(40, 360, 250, 60);
+
+        btn_parar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/parar1.png"))); // NOI18N
+        btn_parar.setBorder(null);
+        btn_parar.setBorderPainted(false);
+        btn_parar.setContentAreaFilled(false);
+        btn_parar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_parar.setFocusPainted(false);
+        btn_parar.setFocusable(false);
+        btn_parar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/parar2.png"))); // NOI18N
+        btn_parar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pararActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_parar);
+        btn_parar.setBounds(40, 360, 250, 60);
 
         lbl_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
         getContentPane().add(lbl_fondo);
@@ -227,31 +251,67 @@ public class programar extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_minutosKeyTyped
 
     private void btn_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarActionPerformed
-
-        String sistema = System.getProperty("os.name");
-        String shutdownCommand = "";
-
-        int horas = Integer.parseInt(txt_horas.getText()) * 60;
-        int minutos = Integer.parseInt(txt_minutos.getText());
-        int tiempo = (horas + minutos) * 60;
-
+        horas = Integer.parseInt(txt_horas.getText());
+        txt_horas.setEnabled(false);
+        minutos = Integer.parseInt(txt_minutos.getText());
+        txt_minutos.setEnabled(false);
+        btn_iniciar.setVisible(false);
+        btn_parar.setVisible(true);
+        int tiempo = ((horas * 60) + (minutos * 60) * 60);
+        ActionListener listener;
+        listener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txt_minutos.setText(Integer.toString(minutos));
+                txt_horas.setText(Integer.toString(horas));
+                minutos--;
+                if (minutos == 0 && horas >= 1) {
+                    horas--;
+                    minutos = 59;
+                }
+            }
+        };
+        timer = new Timer(1000, listener);
+        timer.start();
         if (tiempo > 0) {
-            
             if (sistema.contains("Windows") || sistema.contains("windows")) {
                 shutdownCommand = "shutdown.exe -s -f -t " + tiempo;
-
             }
-            
         }
-        
         try {
             Runtime.getRuntime().exec(shutdownCommand);
         } catch (IOException ex) {
             Logger.getLogger(programar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
 
     }//GEN-LAST:event_btn_iniciarActionPerformed
+
+    private void txt_horasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_horasMouseClicked
+       txt_horas.setText("");
+    }//GEN-LAST:event_txt_horasMouseClicked
+
+    private void txt_minutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_minutosMouseClicked
+        txt_minutos.setText("");
+    }//GEN-LAST:event_txt_minutosMouseClicked
+
+    private void btn_pararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pararActionPerformed
+        txt_minutos.setText("00");
+        txt_horas.setText("00");
+        txt_horas.setEnabled(true);
+        txt_minutos.setEnabled(true);
+        btn_parar.setVisible(false);
+        btn_iniciar.setVisible(true);
+        timer.stop();
+        if (sistema.contains("Windows") || sistema.contains("windows")) {
+                shutdownCommand = "shutdown.exe -a";
+            }
+        try {
+            Runtime.getRuntime().exec(shutdownCommand);
+        } catch (IOException ex) {
+            Logger.getLogger(programar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_pararActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,6 +352,7 @@ public class programar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cerrar;
     private javax.swing.JButton btn_iniciar;
+    private javax.swing.JButton btn_parar;
     private javax.swing.JLabel lbl_apagado;
     private javax.swing.JLabel lbl_automatico;
     private javax.swing.JLabel lbl_fondo;
