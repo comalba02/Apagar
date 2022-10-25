@@ -17,7 +17,7 @@ public class programar extends javax.swing.JFrame {
     int x, y;
     Timer timer;
 
-    int minutos, horas;
+    int horas, minutos, segundos=59;
     
     String sistema = System.getProperty("os.name");
     String shutdownCommand = "";
@@ -264,10 +264,14 @@ public class programar extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 txt_minutos.setText(Integer.toString(minutos));
                 txt_horas.setText(Integer.toString(horas));
-                minutos--;
+                segundos--;
                 if (minutos == 0 && horas >= 1) {
                     horas--;
                     minutos = 59;
+                }
+                if (segundos == 0 && minutos >=1) {
+                    minutos--;
+                    segundos = 59;
                 }
             }
         };
