@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -252,14 +253,14 @@ public class programar extends javax.swing.JFrame {
 
     private void btn_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarActionPerformed
         horas = Integer.parseInt(txt_horas.getText());
-        txt_horas.setEnabled(false);
         minutos = Integer.parseInt(txt_minutos.getText());
-        txt_minutos.setEnabled(false);
-        btn_iniciar.setVisible(false);
-        btn_parar.setVisible(true);
-        int tiempo = ((horas * 60) + (minutos * 60) * 60);
+        int tiempo = (((horas * 60) * 60) + (minutos * 60) * 60);
         ActionListener listener;
         if (tiempo > 0) {
+            txt_minutos.setEnabled(false);
+            txt_horas.setEnabled(false);
+            btn_iniciar.setVisible(false);
+            btn_parar.setVisible(true);
             listener = new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -286,6 +287,8 @@ public class programar extends javax.swing.JFrame {
                     Logger.getLogger(programar.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "el tiempo de apagado debe ser mayor a cero.");
         }
     }//GEN-LAST:event_btn_iniciarActionPerformed
 
