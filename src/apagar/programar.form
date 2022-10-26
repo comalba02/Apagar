@@ -202,7 +202,7 @@
     <Component class="javax.swing.JButton" name="btn_iniciar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/iniciar1.png"/>
+          <Image iconType="3" name="/img/iniciar2.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -215,7 +215,7 @@
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="focusable" type="boolean" value="false"/>
         <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/iniciar2.png"/>
+          <Image iconType="3" name="/img/iniciar1.png"/>
         </Property>
       </Properties>
       <Events>

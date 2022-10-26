@@ -17,11 +17,11 @@ public class programar extends javax.swing.JFrame {
     int x, y;
     Timer timer;
 
-    int horas, minutos, segundos=59;
-    
+    int horas, minutos, segundos = 59;
+
     String sistema = System.getProperty("os.name");
     String shutdownCommand = "";
-    
+
     public programar() {
         initComponents();
         setSize(350, 460);
@@ -158,14 +158,14 @@ public class programar extends javax.swing.JFrame {
         getContentPane().add(lbl_puntos);
         lbl_puntos.setBounds(150, 220, 30, 70);
 
-        btn_iniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iniciar1.png"))); // NOI18N
+        btn_iniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iniciar2.png"))); // NOI18N
         btn_iniciar.setBorder(null);
         btn_iniciar.setBorderPainted(false);
         btn_iniciar.setContentAreaFilled(false);
         btn_iniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_iniciar.setFocusPainted(false);
         btn_iniciar.setFocusable(false);
-        btn_iniciar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iniciar2.png"))); // NOI18N
+        btn_iniciar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iniciar1.png"))); // NOI18N
         btn_iniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_iniciarActionPerformed(evt);
@@ -259,40 +259,38 @@ public class programar extends javax.swing.JFrame {
         btn_parar.setVisible(true);
         int tiempo = ((horas * 60) + (minutos * 60) * 60);
         ActionListener listener;
-        listener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                txt_minutos.setText(Integer.toString(minutos));
-                txt_horas.setText(Integer.toString(horas));
-                segundos--;
-                if (minutos == 0 && horas >= 1) {
-                    horas--;
-                    minutos = 59;
-                }
-                if (segundos == 0 && minutos >=1) {
-                    minutos--;
-                    segundos = 59;
-                }
-            }
-        };
-        timer = new Timer(1000, listener);
-        timer.start();
         if (tiempo > 0) {
+            listener = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    txt_minutos.setText(Integer.toString(minutos));
+                    txt_horas.setText(Integer.toString(horas));
+                    segundos--;
+                    if (minutos == 0 && horas >= 1) {
+                        horas--;
+                        minutos = 59;
+                    }
+                    if (segundos == 0 && minutos >= 1) {
+                        minutos--;
+                        segundos = 59;
+                    }
+                }
+            };
+            timer = new Timer(1000, listener);
+            timer.start();
             if (sistema.contains("Windows") || sistema.contains("windows")) {
                 shutdownCommand = "shutdown.exe -s -f -t " + tiempo;
+                try {
+                    Runtime.getRuntime().exec(shutdownCommand);
+                } catch (IOException ex) {
+                    Logger.getLogger(programar.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
-        try {
-            Runtime.getRuntime().exec(shutdownCommand);
-        } catch (IOException ex) {
-            Logger.getLogger(programar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
     }//GEN-LAST:event_btn_iniciarActionPerformed
 
     private void txt_horasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_horasMouseClicked
-       txt_horas.setText("");
+        txt_horas.setText("");
     }//GEN-LAST:event_txt_horasMouseClicked
 
     private void txt_minutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_minutosMouseClicked
@@ -308,12 +306,12 @@ public class programar extends javax.swing.JFrame {
         btn_iniciar.setVisible(true);
         timer.stop();
         if (sistema.contains("Windows") || sistema.contains("windows")) {
-                shutdownCommand = "shutdown.exe -a";
+            shutdownCommand = "shutdown.exe -a";
+            try {
+                Runtime.getRuntime().exec(shutdownCommand);
+            } catch (IOException ex) {
+                Logger.getLogger(programar.class.getName()).log(Level.SEVERE, null, ex);
             }
-        try {
-            Runtime.getRuntime().exec(shutdownCommand);
-        } catch (IOException ex) {
-            Logger.getLogger(programar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_pararActionPerformed
 
