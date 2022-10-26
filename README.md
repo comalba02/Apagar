@@ -4,7 +4,7 @@ Aplicacion de escritorio para Windows, programe el apagado del equipo establecie
 
 # Capturas
 
-![ap1](https://user-images.githubusercontent.com/49756024/198157213-44b64f58-0445-4950-b26d-ad295856f320.JPG
+![ap1](https://user-images.githubusercontent.com/49756024/198157213-44b64f58-0445-4950-b26d-ad295856f320.JPG)
 
 ![ap2](https://user-images.githubusercontent.com/49756024/198157269-0e1dca7e-39ea-4e82-af23-90002a182e9f.JPG)
 
