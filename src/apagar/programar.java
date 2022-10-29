@@ -22,6 +22,7 @@ public class programar extends javax.swing.JFrame {
 
     String sistema = System.getProperty("os.name");
     String shutdownCommand = "";
+    alerta mensaje = new alerta();
 
     public programar() {
         initComponents();
@@ -288,7 +289,7 @@ public class programar extends javax.swing.JFrame {
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(null, "el tiempo de apagado debe ser mayor a cero.");
+            mensaje.setVisible(true);
         }
     }//GEN-LAST:event_btn_iniciarActionPerformed
 
